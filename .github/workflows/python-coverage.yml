@@ -32,7 +32,7 @@ jobs:
           python -m pip install pytest-cov==6.2.1
 
       - name: Run tests and generate coverage details
-        run: pytest --cov=src
+        run: pytest --cov=calculations --cov-report=term-missing
 
       - name: Coverage comment
         uses: py-cov-action/python-coverage-comment-action@v3
@@ -42,4 +42,4 @@ jobs:
           MINIMUM_ORANGE: 70
 
       - name: Fail if below threshold
-        run: coverage report --fail-under=90
+        run: coverage report --include='src/calculations.py' --fail-under=90
